@@ -3,6 +3,7 @@ import { logReq, globalErr } from "./Middlewares/middleware.js";
 import dotenv from "dotenv";
 import connectDB from "./db/conn.js";
 import mongoose from "mongoose";
+import productRoutes from "./Routes/productRoutes.js";
 //Setups
 const app = express();
 dotenv.config();
@@ -16,6 +17,11 @@ app.use(express.json());
 app.use(logReq);
 
 //Routes
+app.use("/api/products", productRoutes);
+//app.use("/api/stock", stockRoutes);
+//app.use("/api/alerts", alertRoutes);
+//app.use("/api/users", userRoutes);
+//app.use("/api/analytics", analyticsRoutes);
 
 //Global Err Handling
 app.use(globalErr);
