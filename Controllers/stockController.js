@@ -21,7 +21,20 @@ const createStock = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 };
+// Get stock by ProductId
+const getStockByProductId = async (req, res) => {
+  try {
+    const stockEntries = await Stock.find({ ProductId: req.params.productId });
 
+    if (!stockEntries || stockEntries.length === 0) {
+      return res.status(404).json({ error: "No stock entries found" });
+    }
+
+    res.status(200).json(stockEntries);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
 
 
 export { createStock, getStockByProductId };
