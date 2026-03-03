@@ -5,6 +5,7 @@ import connectDB from "./db/conn.js";
 import mongoose from "mongoose";
 import productRoutes from "./Routes/productRoutes.js";
 import userRoutes from "./Routes/userRoutes.js";
+import stockRoutes from "./Routes/stockRoutes.js";
 //Setups
 const app = express();
 dotenv.config();
@@ -19,7 +20,7 @@ app.use(logReq);
 
 //Routes
 app.use("/api/products", productRoutes);
-//app.use("/api/stock", stockRoutes);
+app.use("/api/stock", stockRoutes);
 //app.use("/api/alerts", alertRoutes);
 app.use("/api/users", userRoutes);
 //app.use("/api/analytics", analyticsRoutes);

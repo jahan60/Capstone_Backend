@@ -4,11 +4,11 @@ import {  createUser, getUserById, updateUser, deleteUser} from "../Controllers/
 
 const router = express.Router();
 
-//...../api/users.....
+//   /api/users
 router.route("/")
 .post(createUser) //create user
 
-//..... /api/users/:id.....
+// /api/users/:id
 router.route("/:id")
 .get(getUserById)//get user by id
 .put(updateUser)  //update user by id 
