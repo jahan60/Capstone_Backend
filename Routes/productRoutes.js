@@ -1,6 +1,6 @@
 import express from "express"
 import Product from "../Models/productSchema.js";
-import { createProduct, getProducts, getProductById, updateProduct} from "../Controllers/productController.js";
+import { createProduct, getProducts, getProductById, updateProduct, deleteProduct} from "../Controllers/productController.js";
 
 const router = express.Router();
 
@@ -12,7 +12,8 @@ router.route("/")
 //..... /api/products/:id.....
 router.route("/:id")
 .get(getProductById)//get pruduct by id
-.put(updateProduct);   //update product by id 
+.put(updateProduct)  //update product by id 
+.delete(deleteProduct) //delete product by id
 
 
 
