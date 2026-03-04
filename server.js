@@ -11,6 +11,9 @@ import Product from "./Models/productSchema.js";
 import Alert from "./Models/alertSchema.js";
 import Stock from "./Models/stockSchema.js";
 import User from "./Models/userSchema.js";
+import aiRoutes from "./Routes/aiRoutes.js";
+
+
 //Setups
 const app = express();
 dotenv.config();
@@ -46,6 +49,7 @@ app.use("/api/products", productRoutes);
 app.use("/api/stock", stockRoutes);
 app.use("/api/alerts", alertRoutes);
 app.use("/api/users", userRoutes);
+app.use("/api/ai", aiRoutes);
 //app.use("/api/analytics", analyticsRoutes);
 
 //Global Err Handling
