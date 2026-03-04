@@ -35,5 +35,11 @@ const productSchema = new mongoose.Schema(
       },
       { timestamps: true }
 );
+//indexes
+productSchema.index({ name: 1 });
+productSchema.index({ category: 1 });
+productSchema.index({ price: 1 });
+productSchema.index({ category:1, price: -1});
+
 
 export default mongoose.model("Product", productSchema);

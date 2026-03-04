@@ -34,5 +34,10 @@ const alertSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
+alertSchema.index({ ProductId: 1 });
+alertSchema.index({ Status: 1 });
+alertSchema.index({ AlertType: 1 });
+alertSchema.index({ ProductId: 1, Status: 1 });
+
 
 export default mongoose.model("Alert", alertSchema);

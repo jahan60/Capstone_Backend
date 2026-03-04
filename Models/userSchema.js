@@ -34,4 +34,9 @@ const userSchema = new mongoose.Schema({
 { timestamps: true }
 
 );
+userSchema.index({ Email: 1 });         
+userSchema.index({ Role: 1 });       
+userSchema.index({ Name: 1 });          
+userSchema.index({ Role: 1, Email: 1 });
+
 export default mongoose.model("User", userSchema)

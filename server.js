@@ -7,11 +7,33 @@ import productRoutes from "./Routes/productRoutes.js";
 import userRoutes from "./Routes/userRoutes.js";
 import stockRoutes from "./Routes/stockRoutes.js";
 import alertRoutes from "./Routes/alertRoutes.js";
+import Product from "./Models/productSchema.js";
+import Alert from "./Models/alertSchema.js";
+import Stock from "./Models/stockSchema.js";
+import User from "./Models/userSchema.js";
 //Setups
 const app = express();
 dotenv.config();
 const PORT = process.env.PORT || 3000;
 connectDB();
+
+//check indexes for Product
+const indexes = await Product.listIndexes();
+console.log("product Indexes:", indexes)
+
+//check indexes for Alert
+const alertIndexes = await Alert.listIndexes();
+console.log("Alert Indexes:", alertIndexes);
+
+//check indexes for Stcok 
+const stockIndexes = await Stock.listIndexes();
+  console.log("Stock Indexes:", stockIndexes);
+
+  //check indexes for users 
+  const userIndexes = await User.listIndexes();
+  console.log("User Indexes:", userIndexes);
+
+
 
 //Middleware
 app.use(express.json());

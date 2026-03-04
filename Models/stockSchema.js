@@ -27,6 +27,11 @@ const stockSchema = new mongoose.Schema(
     },
     { timestamps: true}
 );
+//indexes 
+stockSchema.index({ ProductId: 1 });
+stockSchema.index({ ChangeType: 1 });
+stockSchema.index({ ProductId: 1, ChangeType: 1 }); 
+
 
 export default mongoose.model("Stock", stockSchema)
 
