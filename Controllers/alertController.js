@@ -8,7 +8,7 @@ const createAlert = async (req, res) =>{
         const alert = await Alert.create({
             Id,
             ProductId,
-            AlertId,
+            AlertType,
             Message,
             Status
         });
@@ -89,7 +89,7 @@ const deleteAlert = async (req, res) => {
 };
 
 
-export { createAlert, getAllAlerts, getAlertsByProductId, updatedAlertStatus, deleteAlert }
+export { createAlert, getAllAlerts, getAlertsByProductId, updateAlertStatus, deleteAlert }
 
 
 
