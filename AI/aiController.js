@@ -2,7 +2,6 @@ import OpenAI from "openai";
 import Product from "../Models/productSchema.js";
 import Stock from "../Models/stockSchema.js";
 
-
 const client = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY
 });
@@ -13,6 +12,7 @@ async function askAI(prompt) {
     model: "gpt-4o-mini",
     messages: [{ role: "user", content: prompt }]
   });
+
   return response.choices[0].message.content;
 }
 
@@ -20,10 +20,14 @@ async function askAI(prompt) {
 export const predictStock = async (req, res) => {
   try {
     const { productId } = req.body;
-    if (!productId) return res.status(400).json({ error: "productId is required" });
+    if (!productId) {
+      return res.status(400).json({ error: "productId is required" });
+    }
 
     const product = await Product.findOne({ sku: productId });
-    if (!product) return res.status(404).json({ error: "Product not found" });
+    if (!product) {
+      return res.status(404).json({ error: "Product not found" });
+    }
 
     const history = await Stock.find({ ProductId: productId }).sort({ createdAt: 1 });
 
@@ -46,9 +50,25 @@ export const predictStock = async (req, res) => {
       - How much to reorder
       - Demand trend for next month
       - Any risks or unusual patterns
+
+      Return the prediction in JSON format with fields:
+      {
+        "runOutInDays": number,
+        "reorderAmount": number,
+        "nextMonthDemand": number,
+        "risks": string
+      }
     `;
 
-    const prediction = await askAI(prompt);
+    let prediction = await askAI(prompt);
+
+    // Try to parse JSON safely
+    try {
+      prediction = JSON.parse(prediction);
+    } catch (err) {
+      console.warn("AI did not return valid JSON. Returning raw text.");
+    }
+
     res.json({ productId, prediction });
 
   } catch (err) {
@@ -56,8 +76,7 @@ export const predictStock = async (req, res) => {
   }
 };
 
-//  Generate alerts for all products
-
+// Generate alerts for all products
 export const generateAlerts = async (req, res) => {
   try {
     const products = await Product.find();
@@ -78,6 +97,8 @@ export const generateAlerts = async (req, res) => {
       - Out of stock
       - Predicted shortages
       - Unusual demand spikes
+
+      Return the alerts as a list of short bullet points.
     `;
 
     const alerts = await askAI(prompt);
