@@ -1,0 +1,91 @@
+
+
+[{
+  "_id": {
+    "$oid": "69a72ecb353fca65a18dd930"
+  },
+  "Id": "USR-004",
+  "Name": "David Johnson",
+  "Email": "david.johnson@example.com",
+  "Password": "David@2024",
+  "Role": "user",
+  "createdAt": {
+    "$date": "2026-03-03T18:56:11.524Z"
+  },
+  "updatedAt": {
+    "$date": "2026-03-03T18:56:11.524Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69a72eea353fca65a18dd932"
+  },
+  "Id": "USR-005",
+  "Name": "Sara Mitchell",
+  "Email": "sara.mitchell@example.com",
+  "Password": "Sara!555",
+  "Role": "user",
+  "createdAt": {
+    "$date": "2026-03-03T18:56:42.775Z"
+  },
+  "updatedAt": {
+    "$date": "2026-03-03T18:56:42.775Z"
+  },
+  "__v": 0
+},
+
+{
+  "_id": {
+    "$oid": "69a72f10353fca65a18dd934"
+  },
+  "Id": "USR-006",
+  "Name": "Daniel Roberts",
+  "Email": "daniel.roberts@example.com",
+  "Password": "DanRob@2024",
+  "Role": "manager",
+  "createdAt": {
+    "$date": "2026-03-03T18:57:20.070Z"
+  },
+  "updatedAt": {
+    "$date": "2026-03-03T18:57:20.070Z"
+  },
+  "__v": 0
+},
+
+{
+  "_id": {
+    "$oid": "69a72f20353fca65a18dd936"
+  },
+  "Id": "USR-009",
+  "Name": "Emily Turner",
+  "Email": "emily.turner@example.com",
+  "Password": "EmilyT@555",
+  "Role": "user",
+  "createdAt": {
+    "$date": "2026-03-03T18:57:36.865Z"
+  },
+  "updatedAt": {
+    "$date": "2026-03-03T18:57:36.865Z"
+  },
+  "__v": 0
+},
+
+{
+  "_id": {
+    "$oid": "69a72f2b353fca65a18dd938"
+  },
+  "Id": "USR-008",
+  "Name": "Marcus Lee",
+  "Email": "marcus.lee@example.com",
+  "Password": "Marcus!998",
+  "Role": "admin",
+  "createdAt": {
+    "$date": "2026-03-03T18:57:47.454Z"
+  },
+  "updatedAt": {
+    "$date": "2026-03-03T18:57:47.454Z"
+  },
+  "__v": 0
+}
+]

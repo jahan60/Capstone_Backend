@@ -1,0 +1,131 @@
+[{
+  "_id": {
+    "$oid": "69a70f81f0fafecf407e69c0"
+  },
+  "name": "Wireless Mouse",
+  "sku": "WM-1001",
+  "category": "Electronics",
+  "quantity": 45,
+  "minQuantity": 10,
+  "price": 20.99,
+  "createdAt": {
+    "$date": "2026-03-03T16:42:41.042Z"
+  },
+  "updatedAt": {
+    "$date": "2026-03-08T21:19:34.766Z"
+  },
+  "__v": 0
+},
+
+{
+  "_id": {
+    "$oid": "69a7173730e52231abb3f30d"
+  },
+  "name": "Mechanical Keyboard",
+  "sku": "MK-2045",
+  "category": "Electronics",
+  "quantity": 3,
+  "minQuantity": 5,
+  "price": 59.99,
+  "createdAt": {
+    "$date": "2026-03-03T17:15:35.730Z"
+  },
+  "updatedAt": {
+    "$date": "2026-03-08T21:17:55.782Z"
+  },
+  "__v": 0
+},
+
+{
+  "_id": {
+    "$oid": "69a7175130e52231abb3f30f"
+  },
+  "name": "USB-C Charging Cable",
+  "sku": "CC-3321",
+  "category": "Accessories",
+  "quantity": 100,
+  "minQuantity": 20,
+  "price": 9.99,
+  "createdAt": {
+    "$date": "2026-03-03T17:16:01.574Z"
+  },
+  "updatedAt": {
+    "$date": "2026-03-03T17:16:01.574Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69a7176030e52231abb3f311"
+  },
+  "name": "Bluetooth Speaker",
+  "sku": "BS-1188",
+  "category": "Electronics",
+  "quantity": 3,
+  "minQuantity": 5,
+  "price": 34.5,
+  "createdAt": {
+    "$date": "2026-03-03T17:16:16.824Z"
+  },
+  "updatedAt": {
+    "$date": "2026-03-07T03:02:12.497Z"
+  },
+  "__v": 0
+},
+
+{
+  "_id": {
+    "$oid": "69af311cc976c6b9efad044b"
+  },
+  "name": "Office Chair",
+  "sku": "SKU-1002",
+  "category": "Furniture",
+  "quantity": 12,
+  "minQuantity": 3,
+  "price": 129.99,
+  "createdAt": {
+    "$date": "2026-03-09T20:44:12.607Z"
+  },
+  "updatedAt": {
+    "$date": "2026-03-09T20:44:12.607Z"
+  },
+  "__v": 0
+},
+
+{
+  "_id": {
+    "$oid": "69af313dc976c6b9efad044d"
+  },
+  "name": "Notebook (A5)",
+  "sku": "SKU-1005",
+  "category": "Stationery",
+  "quantity": 80,
+  "minQuantity": 20,
+  "price": 4.25,
+  "createdAt": {
+    "$date": "2026-03-09T20:44:45.267Z"
+  },
+  "updatedAt": {
+    "$date": "2026-03-09T20:44:45.267Z"
+  },
+  "__v": 0
+},
+
+{
+  "_id": {
+    "$oid": "69af3155c976c6b9efad044f"
+  },
+  "name": "LED Desk Lamp",
+  "sku": "SKU-1003",
+  "category": "Home & Office",
+  "quantity": 0,
+  "minQuantity": 5,
+  "price": 34.5,
+  "createdAt": {
+    "$date": "2026-03-09T20:45:09.042Z"
+  },
+  "updatedAt": {
+    "$date": "2026-03-09T20:50:26.504Z"
+  },
+  "__v": 0
+}]
