@@ -1,96 +1,148 @@
-import Product from "../Models/productSchema.js"
+import Product from "../Models/productSchema.js";
 
-const createProduct = async (req, res) =>{
-    try{
-        const { name, sku, category, quantity, minQuantity, price } = req.body;
+/* ---------------------------------------------
+   CREATE PRODUCT
+   --------------------------------------------- */
+const createProduct = async (req, res) => {
+  try {
+    const { name, sku, category, quantity, minQuantity, price } = req.body;
 
-        const product = await Product.create({
-            name,
-            sku,
-            category,
-            quantity,
-            minQuantity,
-            price
-        });
+    const product = await Product.create({
+      name,
+      sku,
+      category,
+      quantity,
+      minQuantity,
+      price
+    });
 
-        res.status(201).json({
-            message: "Product created successfully",
-            product
-        });
-    }catch (error){
-        res.status(400).json({ error: error.message });
-    }
+    // Ensure numbers are returned as actual numbers
+    const formatted = {
+      ...product._doc,
+      quantity: Number(product.quantity),
+      minQuantity: Number(product.minQuantity),
+      price: Number(product.price)
+    };
+
+    res.status(201).json({
+      message: "Product created successfully",
+      product: formatted
+    });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
 };
 
-//Get all products
-const getProducts = async (req, res)=> {
-    try{
-        const products = await Product.find();
+/* ---------------------------------------------
+   GET ALL PRODUCTS
+   --------------------------------------------- */
+const getProducts = async (req, res) => {
+  try {
+    const products = await Product.find();
 
-        res.status(200).json(products);
-    }catch (error){
-        res.status(400).json({ error: error.message })
-    }
+    // Convert all numeric fields to real numbers
+    const formatted = products.map(p => ({
+      ...p._doc,
+      quantity: Number(p.quantity),
+      minQuantity: Number(p.minQuantity),
+      price: Number(p.price)
+    }));
+
+    res.json(formatted);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
 };
 
-//Get product by id
+/* ---------------------------------------------
+   GET PRODUCT BY ID
+   --------------------------------------------- */
+const getProductById = async (req, res) => {
+  try {
+    const product = await Product.findById(req.params.id);
 
-const getProductById = async (req, res)=> {
-    try{
-        const product = await Product.findById(req.params.id);
-
-        if(!product){
-            return res.status(404).json({ error: "product not found" });
-        } 
-        res.status(200).json(product);
-    } catch (error){
-        res.status(400).json({ error: error.message })
+    if (!product) {
+      return res.status(404).json({ error: "Product not found" });
     }
+
+    // Format numeric fields
+    const formatted = {
+      ...product._doc,
+      quantity: Number(product.quantity),
+      minQuantity: Number(product.minQuantity),
+      price: Number(product.price)
+    };
+
+    res.status(200).json(formatted);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
 };
 
-//Update product
-const updateProduct = async(req, res)=>{
-    try{
-         const updatedProduct = await Product.findByIdAndUpdate(
-             req.params.id,
-             req.body,
-             { new: true, runValidators: true}
-             );
-             if (!updatedProduct){
-                return res.status(404).json({ error: "Product not found" })
-           }
+/* ---------------------------------------------
+   UPDATE PRODUCT
+   --------------------------------------------- */
+const updateProduct = async (req, res) => {
+  try {
+    const updatedProduct = await Product.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true, runValidators: true }
+    );
 
-           res.status(200).json({
-            message: "Product updated successfully",
-            product: updatedProduct
-           });
-    }catch (error){
-        res.status(400).json({ error: error.message})
+    if (!updatedProduct) {
+      return res.status(404).json({ error: "Product not found" });
     }
+
+    // Format numeric fields
+    const formatted = {
+      ...updatedProduct._doc,
+      quantity: Number(updatedProduct.quantity),
+      minQuantity: Number(updatedProduct.minQuantity),
+      price: Number(updatedProduct.price)
+    };
+
+    res.status(200).json({
+      message: "Product updated successfully",
+      product: formatted
+    });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
 };
 
-//Delete Product
-const deleteProduct = async(req, res)=>{
-    try{
-        const deletedProduct = await Product.findByIdAndDelete(
-            req.params.id,
-            req.body,
-              { new: true, runValidators: true}
-        );  
-        if(!deletedProduct){
-                return res.status(404).json({ error: "Product not found" })
-           }
+/* ---------------------------------------------
+   DELETE PRODUCT
+   --------------------------------------------- */
+const deleteProduct = async (req, res) => {
+  try {
+    const deletedProduct = await Product.findByIdAndDelete(req.params.id);
 
-           res.status(200).json({
-            message: "Product deleted successfully",
-            product: deletedProduct
-           });
-    }catch (error){
-        res.status(400).json({ error: error.message})
+    if (!deletedProduct) {
+      return res.status(404).json({ error: "Product not found" });
     }
 
-}
+    // Format numeric fields
+    const formatted = {
+      ...deletedProduct._doc,
+      quantity: Number(deletedProduct.quantity),
+      minQuantity: Number(deletedProduct.minQuantity),
+      price: Number(deletedProduct.price)
+    };
 
+    res.status(200).json({
+      message: "Product deleted successfully",
+      product: formatted
+    });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
 
-
-export { createProduct, getProducts, getProductById, updateProduct, deleteProduct };
+export {
+  createProduct,
+  getProducts,
+  getProductById,
+  updateProduct,
+  deleteProduct
+};

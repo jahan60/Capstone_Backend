@@ -39,29 +39,22 @@ const stockIndexes = await Stock.listIndexes();
   const userIndexes = await User.listIndexes();
   console.log("User Indexes:", userIndexes);
 
-
-
-//Middleware
+// Middleware
 app.use(cors());
 app.use(express.json());
 
-//Logging middleware
+// Logging middleware
 app.use(logReq);
 
+// Public route (NO protect here)
 app.use("/api/auth", authRoutes);
 
-//auth middleware
-app.use(protect);
-
-//Routes
+// Protected routes
 app.use("/api/products", protect, productRoutes);
-app.use("/api/stock", stockRoutes);
-app.use("/api/alerts", alertRoutes);
-app.use("/api/users", userRoutes);
-app.use("/api/ai", aiRoutes);
-
-
-
+app.use("/api/stock", protect, stockRoutes);
+app.use("/api/alerts", protect, alertRoutes);
+app.use("/api/users", protect, userRoutes);
+app.use("/api/ai", protect, aiRoutes);
 
 
 //Global Err Handling
