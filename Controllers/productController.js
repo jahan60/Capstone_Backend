@@ -70,20 +70,23 @@ const getProductById = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 };
- //udpate 
+// controllers/productController.js
 const updateProduct = async (req, res) => {
   try {
+    const productId = req.params.id;
+
+    // Update product in DB
     const updatedProduct = await Product.findByIdAndUpdate(
-      req.params.id,
+      productId,
       req.body,
-      { new: true, runValidators: true }
+      { new: true } // important: return the updated product
     );
 
     if (!updatedProduct) {
       return res.status(404).json({ error: "Product not found" });
     }
 
-    // Format numeric fields
+    // Make sure numbers are numbers
     const formatted = {
       ...updatedProduct._doc,
       quantity: Number(updatedProduct.quantity),
@@ -99,6 +102,8 @@ const updateProduct = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 };
+
+
 
 //delete
 const deleteProduct = async (req, res) => {
