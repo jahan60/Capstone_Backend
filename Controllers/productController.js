@@ -1,8 +1,6 @@
 import Product from "../Models/productSchema.js";
 
-/* ---------------------------------------------
-   CREATE PRODUCT
-   --------------------------------------------- */
+//create product
 const createProduct = async (req, res) => {
   try {
     const { name, sku, category, quantity, minQuantity, price } = req.body;
@@ -32,10 +30,7 @@ const createProduct = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 };
-
-/* ---------------------------------------------
-   GET ALL PRODUCTS
-   --------------------------------------------- */
+//get all products
 const getProducts = async (req, res) => {
   try {
     const products = await Product.find();
@@ -53,10 +48,7 @@ const getProducts = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
-
-/* ---------------------------------------------
-   GET PRODUCT BY ID
-   --------------------------------------------- */
+ //get by id
 const getProductById = async (req, res) => {
   try {
     const product = await Product.findById(req.params.id);
@@ -78,10 +70,7 @@ const getProductById = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 };
-
-/* ---------------------------------------------
-   UPDATE PRODUCT
-   --------------------------------------------- */
+ //udpate 
 const updateProduct = async (req, res) => {
   try {
     const updatedProduct = await Product.findByIdAndUpdate(
@@ -111,9 +100,7 @@ const updateProduct = async (req, res) => {
   }
 };
 
-/* ---------------------------------------------
-   DELETE PRODUCT
-   --------------------------------------------- */
+//delete
 const deleteProduct = async (req, res) => {
   try {
     const deletedProduct = await Product.findByIdAndDelete(req.params.id);
